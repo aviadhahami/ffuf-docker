@@ -1,6 +1,6 @@
 FROM golang:1.16.4-alpine3.13
 
-COPY start.sh ffuf_qt.py /opt/ffuf/
+COPY start.sh startc.sh ffuf_qt.py /opt/ffuf/
 
 RUN apk --no-cache add git \
     && export GO111MODULE=on \
@@ -15,4 +15,6 @@ RUN apk --no-cache add git \
 WORKDIR /opt/ffuf/
 VOLUME /var/reports/
 
-ENTRYPOINT ["./start.sh"]
+
+RUN git clone https://github.com/onvio/wordlists/
+# ENTRYPOINT ["./start.sh"]
